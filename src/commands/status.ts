@@ -1,7 +1,7 @@
 /**
  * Created by Pointless on 1/08/17.
  */
-import {DiscordThingy, CommandClass, Command} from 'discordthingy';
+import {DiscordThingy, CommandClass, Command, VERSION} from 'discordthingy';
 import {Message} from 'discord.js';
 import * as process from 'process';
 import {version as discordVersion} from 'discord.js';
@@ -30,7 +30,7 @@ export default class StatusCommand {
       ],
       footer: {
         icon_url: message.client.users.get(this.thingy.owner).displayAvatarURL,
-        text: `Pointless Bot v${require('../../package.json').version}`
+        text: `Athena v${require('../../package.json').version}`
       }
     }});
   }
@@ -40,11 +40,11 @@ export default class StatusCommand {
 
     message.channel.send({embed: {
       color: 0x4CAF50,
-      description: `This Pointless Bot™ has been online for \
+      description: `Athena has been alive for \
 ${Math.floor(uptime / 60 / 60)}hrs, ${Math.floor((uptime / 60) % 60)}mins, ${Math.floor(uptime % 60)}secs`,
       footer: {
         icon_url: message.client.users.get(this.thingy.owner).displayAvatarURL,
-        text: `Pointless Bot v${require('../../package.json').version}`
+        text: `Athena v${require('../../package.json').version}`
       }
     }});
   }
@@ -55,10 +55,10 @@ ${Math.floor(uptime / 60 / 60)}hrs, ${Math.floor((uptime / 60) % 60)}mins, ${Mat
 
     message.channel.send({embed: {
       color: 0x4CAF50,
-      description: 'Pointless bots are online!',
+      description: 'Athena is online!',
       fields: [
         {
-          name: 'Bot Uptime:',
+          name: 'Uptime:',
           value: `${Math.floor(uptime / 60 / 60)}hrs, ${Math.floor((uptime / 60) % 60)}mins, ${Math.floor(uptime % 60)}secs`
         },
         {
@@ -77,6 +77,11 @@ ${Math.floor(uptime / 60 / 60)}hrs, ${Math.floor((uptime / 60) % 60)}mins, ${Mat
         },
         {
           inline: true,
+          name: 'DiscordThingy Ver:',
+          value: VERSION
+        },
+        {
+          inline: true,
           name: 'Ping',
           value: message.client.ping + 'ms'
         },
@@ -88,7 +93,7 @@ ${Math.floor(uptime / 60 / 60)}hrs, ${Math.floor((uptime / 60) % 60)}mins, ${Mat
       ],
       footer: {
         icon_url: message.client.users.get(this.thingy.owner).displayAvatarURL,
-        text: `Pointless Bot v${require('../../package.json').version}`
+        text: `Athena v${require('../../package.json').version}`
       }
     }});
   }
