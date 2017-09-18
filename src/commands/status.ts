@@ -58,10 +58,12 @@ ${Math.floor(uptime / 60 / 60)}hrs, ${Math.floor((uptime / 60) % 60)}mins, ${Mat
       description: 'Athena is online!',
       fields: [
         {
+          inline: true,
           name: 'Uptime:',
           value: `${Math.floor(uptime / 60 / 60)}hrs, ${Math.floor((uptime / 60) % 60)}mins, ${Math.floor(uptime % 60)}secs`
         },
         {
+          inline: true,
           name: 'Machine:',
           value: `\`${process.env.ENV || process.env.ENVIRONMENT || 'Unknown'}\` build on \`${hostname() || 'no hostname, wtf?'}\``
         },
@@ -88,7 +90,7 @@ ${Math.floor(uptime / 60 / 60)}hrs, ${Math.floor((uptime / 60) % 60)}mins, ${Mat
         {
           inline: true,
           name: 'Latency',
-          value: latency < 0 ? 'System Time Incorrect' : latency + 'ms'
+          value: latency < 0 ? ':shrug:' : latency + 'ms'
         }
       ],
       footer: {
