@@ -15,27 +15,14 @@ export default class EvalCommand {
   })
   public eval(message: Message, args: Arguments) {
     const code = args.contentFrom(1);
-    let vm;
-    if(secure) {
-      vm = new VM({
-        sandbox: {
-          message
-        },
-        timeout: 1000
-      });
-    } else {
-      vm = new VM({
-        sandbox: {
-          message
-        },
-        timeout: 1000
-      });
-    }
+    const script = new vm.Script(code);
     const start = process.hrtime();
     let desc;
     let success = false;
     try {
-      let returned = vm.run(code);
+      let returned = script.runInNewContext({
+        message: message
+      });
       success = true;
       if(returned instanceof Object) desc = JSON.stringify(returned, null, 2);
       else if(typeof returned === 'string') desc = `"${returned}"`;
