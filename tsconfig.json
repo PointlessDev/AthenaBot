@@ -9,7 +9,10 @@
     "outDir": "dist",
     "declaration": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "typeRoots": [
+      "./src/types"
+    ]
   },
   "compileOnSave": true,
   "include": [

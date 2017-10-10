@@ -55,7 +55,6 @@ ${Math.floor(uptime / 60 / 60)}hrs, ${Math.floor((uptime / 60) % 60)}mins, ${Mat
 
     message.channel.send({embed: {
       color: 0x4CAF50,
-      description: 'Athena is online!',
       fields: [
         {
           inline: true,

@@ -4,6 +4,9 @@
 import {Command, Arguments, Authorization} from 'discordthingy';
 import {Message} from 'discord.js';
 import {VM} from 'vm2';
+import * as vm from 'vm';
+
+const secure = false;
 
 export default class EvalCommand {
   @Command({
@@ -12,12 +15,22 @@ export default class EvalCommand {
   })
   public eval(message: Message, args: Arguments) {
     const code = args.contentFrom(1);
-    const vm = new VM({
-      sandbox: {
-        message
-      },
-      timeout: 1000
-    });
+    let vm;
+    if(secure) {
+      vm = new VM({
+        sandbox: {
+          message
+        },
+        timeout: 1000
+      });
+    } else {
+      vm = new VM({
+        sandbox: {
+          message
+        },
+        timeout: 1000
+      });
+    }
     const start = process.hrtime();
     let desc;
     let success = false;
